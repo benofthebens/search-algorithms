@@ -3,6 +3,7 @@ package org.machines.problems.jug;
 import org.machines.search.State;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -86,26 +87,31 @@ public class JugState extends State {
         ).toList();
         List<JugState> movedJugs  = jugs.stream().map(
                 jug -> {
-                    List<Jug> jugList = new ArrayList<>();
+                    Jug[] jugList = new Jug[jugs.size()];
                     for(Jug value : jugs) {
                         if(!jug.equals(value) && !jug.isEmpty() && !value.isFull()) {
                             Jug source= jug.copy();
                             Jug target = value.copy();
 
-                            jugList.add(null);
-                            jugList.add(null);
-
                             source.moveTo(target);
 
-                            jugList.set(jugs.indexOf(jug), source);
-                            jugList.set(jugs.indexOf(value), target);
-
+                            jugList[jugs.indexOf(jug)]= source;
+                            jugList[jugs.indexOf(value)]= target;
+                            for(int i = 0; i < jugs.size(); i++) {
+                                if(!jugs.get(i).equals(value) && !jugs.get(i).equals(jug)) {
+                                    jugList[jugs.indexOf(jugs.get(i))] = jugs.get(i).copy();
+                                }
+                            }
                         }
                     }
-                    if(!jugList.isEmpty()) {
-                        return new JugState(jugList);
-                    }
-                    return null;
+                    List<Jug> jugList_ = Arrays.stream(jugList)
+                            .filter(Objects::nonNull)
+                            .collect(Collectors.toList());
+
+                    if(jugList_.isEmpty())
+                        return null;
+
+                    return new JugState(jugList_);
                 }
         ).toList();
         states.addAll(emptyJugs);
