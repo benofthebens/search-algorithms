@@ -9,26 +9,41 @@ public class BFS extends SearchAlgorithm {
     @Override
     public List<State> search(State initialState, State goalState) {
         Queue<State> queue = new LinkedList<>();
+        Map<State, State> stateMap = new HashMap<>();
 
         queue.add(initialState);
-        visited.add(String.valueOf(initialState));
+        visited.add(initialState);
+
+        stateMap.put(initialState, null);
 
         while(!queue.isEmpty()) {
             State current = queue.poll();
-            result.add(current);
 
-            if(current.isGoalState(goalState, current)) {
-                return result;
+            if(current.isGoalState(goalState)) {
+                return backtrack(stateMap, current);
             }
 
             for(State state : current.expand()){
-                if(!visited.contains(String.valueOf(state))){
-                    visited.add(String.valueOf(state));
+                if(!visited.contains(state)){
+                    visited.add(state);
                     queue.add(state);
+                    stateMap.put(state, current);
                 }
             }
         }
         result.clear();
         return result;
+    }
+    private List<State> backtrack(Map<State, State> stateMap, State goalState) {
+        State current = goalState;
+
+        while (Objects.nonNull(current)) {
+            result.add(current);
+            current = stateMap.get(current);  // Traverse back through parents
+        }
+
+        Collections.reverse(result);  // Reverse to get correct order (start → goal)
+        return result;
+
     }
 }
