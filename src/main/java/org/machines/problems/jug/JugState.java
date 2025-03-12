@@ -123,13 +123,12 @@ public class JugState extends State {
     }
 
     @Override
-    public boolean isGoalState(State goalState, State currentState) {
+    public boolean isGoalState(State goalState) {
         JugState jugGoalState = (JugState) goalState;
-        JugState jugCurrentState = (JugState) currentState;
 
         return (
-                jugGoalState.getJugs().get(0).getCurrentCapacity() == jugCurrentState.getJugs().get(0).getCurrentCapacity() &&
-                jugGoalState.getJugs().get(1).getCurrentCapacity() == jugCurrentState.getJugs().get(1).getCurrentCapacity()
+                jugGoalState.getJugs().get(0).getCurrentCapacity() == this.getJugs().get(0).getCurrentCapacity() ||
+                jugGoalState.getJugs().get(0).getCurrentCapacity() == this.getJugs().get(1).getCurrentCapacity()
         );
     }
 }
