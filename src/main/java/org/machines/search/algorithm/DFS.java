@@ -9,17 +9,19 @@ public class DFS extends SearchAlgorithm {
     @Override
     public List<State> search(State initialState, State goalState) {
 
+        visited.add(initialState);
         result.add(initialState);
-        visited.add(String.valueOf(initialState));
 
-        if(initialState.isGoalState(goalState, initialState)) {
+        if(initialState.isGoalState(goalState)) {
             return result;
         }
         for(State state : initialState.expand()) {
-            if(!visited.contains(String.valueOf(state))) {
-                this.search(state, goalState);
+            if(!visited.stream().anyMatch(s -> s.toString().equals(state.toString()))) {
+                List<State> path = this.search(state, goalState);
+                if(!result.isEmpty()) return path;
             }
         }
+        result.clear();
         return result;
     }
 }
