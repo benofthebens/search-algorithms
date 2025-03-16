@@ -16,7 +16,7 @@ public class DFS extends SearchAlgorithm {
             return result;
         }
         for(State state : initialState.expand()) {
-            if(!visited.stream().anyMatch(s -> s.toString().equals(state.toString()))) {
+            if(!visited.contains(state)) {
                 List<State> path = this.search(state, goalState);
                 if(!result.isEmpty()) return path;
             }
