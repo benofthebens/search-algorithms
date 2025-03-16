@@ -84,6 +84,7 @@ This class inherits from the **StateSpace** abstract class, which includes:
 - **Guaranteed to find a solution**.
 - **Admissible** (in the case of uniform cost).
 - Efficiency depends on the location of the solution.
+- Uses a Queue
 
 #### When to Use
 
@@ -97,14 +98,14 @@ This class inherits from the **StateSpace** abstract class, which includes:
 
 1. **Initialize** a queue with the initial state and a hashmap for visited nodes (and their parent nodes to prevent cycles).
 2. While the queue is not empty:
-  1. **Dequeue** the current state.
-  2. **Expand** the current state by executing all available valid transitions (fill, empty, or move).
-  3. If a generated state exists in the visited hashmap, **ignore** it.
-  4. **Check** the generated state against the goal state:
+3. **Dequeue** the current state.
+4. **Expand** the current state by executing all available valid transitions (fill, empty, or move).
+5. If a generated state exists in the visited hashmap, **ignore** it.
+6. **Check** the generated state against the goal state:
     - If it matches the goal state, **backtrack** through the visited hashmap to find the path.
     - If not, continue the search.
-  5. **Enqueue** valid states and mark them as visited.
-  6. Mark the current state as visited if it doesn't have a parent node (mark parent as null).
+7. **Enqueue** valid states and mark them as visited.
+8. Mark the current state as visited if it doesn't have a parent node (mark parent as null).
 
 ---
 
@@ -112,18 +113,43 @@ This class inherits from the **StateSpace** abstract class, which includes:
 - **Guaranteed to find a solution**.
 - **Not admissible**.
 - Efficiency depends on the location of the solution.
+- Uses Stack (Recursion)
 
 #### When to Use
 
-| ✅ **When to Use**                                    | ❌ **When Not to Use**                              |
-|------------------------------------------------------|-----------------------------------------------------|
-| Space is restricted                                  | Paths are infinite                                  |
-| Solutions are at similar depths                      | The search graph contains cycles                    |
-| You have knowledge to allow ordering of nodes at each level | Some solutions are deep and others are shallow    |
+| ✅ **When to Use**                                           | ❌ **When Not to Use**                          |
+|-------------------------------------------------------------|------------------------------------------------|
+| Space is restricted                                         | Paths are infinite                             |
+| Solutions are at similar depths                             | The search graph contains cycles               |
+| You have knowledge to allow ordering of nodes at each level | Some solutions are deep and others are shallow |
 
 ---
 
 ### Progressive Deepening Search
-*(Details about this algorithm would be added here...)*
+
+- Compromise between BFS and DFS.
+- Added extra variable of depth bound (d) which imposes backtracking when the frontier is at that depth.
+- If the no solution is found at depth d increase d.
+- Save nodes that are found at depth d to a pending list.
+  - If open is empty and the goal is not found move the pending list to the open list.
+
+| ✅ **When to Use**              | ❌ **When Not to Use**  |
+|--------------------------------|------------------------|
+| Limited Space                  | Known shallow solution |
+| Unknown Depth of the Solution: | Large branching factor |
+| Can find the optimal solution  | Non-Optimal Solutions  |
+
+---
+
+### A star
+
+
+---
+
+### Dijkstra
+
+---
+
+### Branch & Bound
 
 ---
