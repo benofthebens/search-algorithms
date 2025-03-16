@@ -127,5 +127,3 @@ This class inherits from the **StateSpace** abstract class, which includes:
 *(Details about this algorithm would be added here...)*
 
 ---
-
-This structure organizes the content with clear headings and sections, using tables and bullet points for easy reading. It also improves consistency across sections, particularly when describing the algorithms and their usage. The overall design is clean and easy to navigate.
