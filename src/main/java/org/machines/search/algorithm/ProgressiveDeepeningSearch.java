@@ -33,9 +33,9 @@ public class ProgressiveDeepeningSearch extends SearchAlgorithm {
             return false;
 
         for(State state : src.expand()) {
-            if(visited.contains(state.toString())) {
+            if(visited.contains(state))
                 continue;
-            }
+
             if(DLS(state, goalState, depth - 1)) {
                 result.add(src);
                 return true;
