@@ -3,6 +3,7 @@ package org.machines.search.algorithm;
 import org.machines.search.SearchAlgorithm;
 import org.machines.search.State;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DFS extends SearchAlgorithm {
@@ -11,17 +12,16 @@ public class DFS extends SearchAlgorithm {
 
         visited.add(initialState);
         result.add(initialState);
-
         if(initialState.isGoalState(goalState)) {
-            return result;
+            return new ArrayList<>(result);
         }
         for(State state : initialState.expand()) {
             if(!visited.contains(state)) {
                 List<State> path = this.search(state, goalState);
-                if(!result.isEmpty()) return path;
+                if(!path.isEmpty()) return path;
             }
         }
-        result.clear();
-        return result;
+        result.remove(result.size()-1);
+        return new ArrayList<>();
     }
 }
