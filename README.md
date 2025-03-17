@@ -78,6 +78,17 @@ This class inherits from the **StateSpace** abstract class, which includes:
 
 ---
 
+### Sudoku
+Given an NxN matrix where N is a perfect square where the grid is divided into sub grids of $\sqrt{N} * \sqrt{N}$. 
+Where the objective is to fill the rows and columns from 1 to N so that a number appears only once in the row and column.
+- Each row must contain only one of each 1-N without any repeats
+- Each column must contain only one of each 1-N without any repeats
+- Each  $\sqrt{N} * \sqrt{N}$ subgrid must contain the digits of 1-N without repetition
+ 
+Goal: To find the permutation of the $N*N$ matrix that satisfies these constraints
+
+---
+
 ## Algorithms
 
 ### Breadth First Search
