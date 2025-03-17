@@ -80,14 +80,43 @@ This class inherits from the **StateSpace** abstract class, which includes:
 ---
 
 ### Sudoku
-Given an NxN matrix where N is a perfect square where the grid is divided into sub grids of $\sqrt{N} * \sqrt{N}$. 
-Where the objective is to fill the rows and columns from 1 to N so that a number appears only once in the row and column.
-- Each row must contain only one of each 1-N without any repeats
-- Each column must contain only one of each 1-N without any repeats
-- Each  $\sqrt{N} * \sqrt{N}$ subgrid must contain the digits of 1-N without repetition
+Given an $N*N$ matrix where $N$ is a perfect square where the grid is divided into sub grids of $\sqrt{N} * \sqrt{N}$. 
+Where the objective is to fill the rows and columns from 1 to $N$ so that a number appears only once in the row and column.
+- Each row must contain only one of each 1 to $N$ without any repeats
+- Each column must contain only one of each 1 to $N$ without any repeats
+- Each  $\sqrt{N} * \sqrt{N}$ subgrid must contain the digits of 1 to $N$ without repetition
  
 Goal: To find the permutation of the $N*N$ matrix that satisfies these constraints
 
+- State: The state is the grid with a selected cell that is modified.
+- Transitions: The transitions are the insertions from 1 to $N$
+- Cost: Assuming uniform cost 
+- Initial State: input matrix i.e: 
+$$
+\begin{bmatrix}
+7 & 3 & 2 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 6 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 8 & 6 & 0 & 5 & 0 & 0 & 0 \\
+3 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 8 \\
+0 & 0 & 0 & 4 & 9 & 0 & 0 & 0 & 5 \\
+0 & 9 & 0 & 0 & 0 & 0 & 0 & 6 & 0 \\
+0 & 0 & 0 & 0 & 6 & 0 & 2 & 7 & 0 \\
+0 & 0 & 0 & 0 & 0 & 7 & 0 & 0 & 0 \\
+0 & 8 & 0 & 0 & 0 & 2 & 3 & 0 & 0 \\
+\end{bmatrix}
+$$
+- Goal State: There is not a static goal state that is defined the goal state is just whether the output matrix satisfies the constraints i.e:
+$$\begin{bmatrix}
+  7 & 3 & 2 & 9 & 8 & 4 & 6 & 5 & 1 \\
+  9 & 5 & 6 & 1 & 2 & 3 & 8 & 4 & 7 \\
+  1 & 4 & 8 & 6 & 7 & 5 & 9 & 2 & 3 \\
+  3 & 7 & 4 & 2 & 5 & 6 & 1 & 9 & 8 \\
+  2 & 6 & 1 & 4 & 9 & 8 & 7 & 3 & 5 \\
+  8 & 9 & 5 & 7 & 3 & 1 & 4 & 6 & 2 \\
+  5 & 1 & 3 & 8 & 6 & 9 & 2 & 7 & 4 \\
+  4 & 2 & 9 & 3 & 1 & 7 & 5 & 8 & 6 \\
+  6 & 8 & 7 & 5 & 4 & 2 & 3 & 1 & 9 \\
+  \end{bmatrix}$$
 ---
 
 ## Algorithms
