@@ -11,7 +11,9 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Dijkstra extends SearchAlgorithm {
+
     private List<State> allStates;
+
     public Dijkstra(List<State> allStates) {
         this.allStates = allStates;
     }

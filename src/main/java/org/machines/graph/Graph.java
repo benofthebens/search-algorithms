@@ -17,6 +17,15 @@ public class Graph<T> {
     public List<Node<T>> getNodes() {
         return this.nodes;
     }
+    public static void createFromAdjacencyMatrix(int[][] adjacencyMatrix) {
+        if(adjacencyMatrix.length != adjacencyMatrix[0].length) return;
+
+        for(int i = 0; i < adjacencyMatrix.length; i++) {
+            System.out.println((char) (65 + i));
+
+        }
+
+    }
 
     public int[][] adjacencyMatrix() {
         int[][] matrix = new int[this.nodes.size()][this.nodes.size()];

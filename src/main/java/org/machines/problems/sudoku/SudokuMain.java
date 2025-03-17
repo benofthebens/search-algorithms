@@ -28,7 +28,7 @@ public class SudokuMain {
         SudokuStateSpace stateSpacedfs = new SudokuStateSpace(
                 initalState, finalState,dfs
         );
-        System.out.println(stateSpace.search());
+        System.out.println(stateSpace.search().size());
 
     }
 }
