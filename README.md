@@ -92,6 +92,7 @@ Goal: To find the permutation of the $N*N$ matrix that satisfies these constrain
 - Transitions: The transitions are the insertions from 1 to $N$
 - Cost: Assuming uniform cost 
 - Initial State: input matrix i.e: 
+ 
 $$
 \begin{bmatrix}
 7 & 3 & 2 & 0 & 0 & 0 & 0 & 0 & 0 \\
@@ -105,8 +106,11 @@ $$
 0 & 8 & 0 & 0 & 0 & 2 & 3 & 0 & 0 \\
 \end{bmatrix}
 $$
+
 - Goal State: There is not a static goal state that is defined the goal state is just whether the output matrix satisfies the constraints i.e:
-$$\begin{bmatrix}
+ 
+$$
+\begin{bmatrix}
   7 & 3 & 2 & 9 & 8 & 4 & 6 & 5 & 1 \\
   9 & 5 & 6 & 1 & 2 & 3 & 8 & 4 & 7 \\
   1 & 4 & 8 & 6 & 7 & 5 & 9 & 2 & 3 \\
@@ -116,7 +120,8 @@ $$\begin{bmatrix}
   5 & 1 & 3 & 8 & 6 & 9 & 2 & 7 & 4 \\
   4 & 2 & 9 & 3 & 1 & 7 & 5 & 8 & 6 \\
   6 & 8 & 7 & 5 & 4 & 2 & 3 & 1 & 9 \\
-  \end{bmatrix}$$
+  \end{bmatrix}
+$$
 ---
 
 ## Algorithms
