@@ -6,6 +6,11 @@ import org.machines.search.State;
 import java.util.*;
 
 public class BFS extends SearchAlgorithm {
+    /**
+     * @param initialState
+     * @param goalState
+     * @return path
+     */
     @Override
     public List<State> search(State initialState, State goalState) {
         Queue<State> queue = new LinkedList<>();
