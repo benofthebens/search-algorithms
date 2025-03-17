@@ -88,10 +88,10 @@ Where the objective is to fill the rows and columns from 1 to $N$ so that a numb
  
 Goal: To find the permutation of the $N*N$ matrix that satisfies these constraints
 
-- State: The state is the grid with a selected cell that is modified.
-- Transitions: The transitions are the insertions from 1 to $N$
-- Cost: Assuming uniform cost 
-- Initial State: input matrix i.e: 
+- **State**: The state is the grid with a selected cell that is modified.
+- **Transitions**: The transitions are the insertions from 1 to $N$
+- **Cost**: Assuming uniform cost 
+- **Initial State**: input matrix i.e: 
  
 $$
 \begin{bmatrix}
@@ -141,7 +141,7 @@ $$
 | Need to find a solution with the fewest steps       | Solution is deep in the search tree       |
 | Very deep or infinite search trees                  | The branching factor is large             |
 
-#### Example Usage (The Jug Problem)
+#### Example Usage [The Jug Problem](#the-jug-problem)
 
 1. **Initialize** a queue with the initial state and a hashmap for visited nodes (and their parent nodes to prevent cycles).
 2. While the queue is not empty:
@@ -153,6 +153,17 @@ $$
     - If not, continue the search.
 7. **Enqueue** valid states and mark them as visited.
 8. Mark the current state as visited if it doesn't have a parent node (mark parent as null).
+
+#### Example Usage [Sudoku](#sudoku)
+1. Initialise a queue with the initial state and a hashmap for the visited nodes
+2. While the queue is not empty
+3. to get the currenState dequeue from the queue.
+4. expand the currentState by executing all available and valid transitions i.e the insertion of valid numbers in the cell from 1 to $N$
+5. Check if the generated state meets the criteria of the goal state
+6. enqueue the valid states and mark the as visited
+   - If it matches the pre-conditions backtrack though the hashmap from the currentState and reverse the list.
+   - If not continue the search.
+7. Mark the current state as visited if it doesn't have a parent node (mark parent as null)
 
 ---
 
@@ -170,6 +181,10 @@ $$
 | Solutions are at similar depths                             | The search graph contains cycles               |
 | You have knowledge to allow ordering of nodes at each level | Some solutions are deep and others are shallow |
 
+#### Example Usage [The Jug Problem](#the-jug-problem)
+
+#### Example Usage [Sudoku](#sudoku)
+
 ---
 
 ### Progressive Deepening Search
@@ -185,6 +200,10 @@ $$
 | Limited Space                  | Known shallow solution |
 | Unknown Depth of the Solution: | Large branching factor |
 | Can find the optimal solution  | Non-Optimal Solutions  |
+
+#### Example Usage [The Jug Problem](#the-jug-problem)
+
+#### Example Usage [Sudoku](#sudoku)
 
 ---
 
