@@ -183,6 +183,16 @@ $$
 
 #### Example Usage [The Jug Problem](#the-jug-problem)
 
+1. Adds the initial JugState to the visited hashmap, adds it to the result path.
+2. Checks if the current JugSTate is the goalState
+   - If it is returns the result path.
+   - else it continues
+3. Expand the states with the valid and available transitions 
+4. For each expanded state checks whether the state has been visited.
+5. Recurse this by parsing the current expanded state into the search function. (steps 1-5)
+6. If the recursive search returns a non-empty path (indicating a valid solution), it is returned.
+7. if there are no more routes the branch is removed and the algorithm backtracks to previous state where it is removed from the result list. (returns a blank arraylist)
+
 #### Example Usage [Sudoku](#sudoku)
 
 ---
