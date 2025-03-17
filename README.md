@@ -16,6 +16,7 @@ This repository demonstrates and describes the implementation of **Search Algori
       - [Jug](#jug)
       - [JugState](#jugstate)
       - [JugStateSpace](#jugstatespace)
+  - [Sudoku](#sudoku)
 - [Algorithms](#algorithms)
   - [Breadth First Search](#breadth-first-search)
   - [Depth First Search](#depth-first-search)
